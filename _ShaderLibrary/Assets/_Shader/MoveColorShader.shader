@@ -1,4 +1,4 @@
-Shader "Unlit/RainbowShader"
+Shader "Unlit/MoveColorShader"
 {
     Properties // ownDefined inputData  
     {
@@ -23,19 +23,21 @@ Shader "Unlit/RainbowShader"
            float4 _Color;  
 
             // automatically filled out by unity
-            struct MeshData  // perVertex meshData       
+            struct MeshData  // perVertex meshData    
             {
-                float4 vertex : POSITION; // vertexPosition          
-                float3 normals : NORMAL; // normalDirection of a vertex                 
-                float2 uv0 : TEXCOORD0; // uv0 coordinates -> diffuse/normal map textures  
+                float4 vertex : POSITION; // vertexPosition   
+                float3 normals : NORMAL; // normalDirection of a vertex     
+                float4 uv0 : TEXCOORD0; // uv0 coordinates -> diffuse/normal map textures  
                 
             };
 
-            struct Interpolaters // v2f   
+            struct Interpolaters // v2f    
             { 
                 
-                float4 vertex : SV_POSITION; // clipSpacePosition of the vertex    
-                float3 normal : TEXCOORD0;                    
+                float4 vertex : SV_POSITION; // clipSpacePosition of the vertex
+                float3 normal : TEXCOORD0;
+
+                float2 uv : TEXCOORD1; 
             };   
 
                                   
@@ -43,9 +45,10 @@ Shader "Unlit/RainbowShader"
             Interpolaters vert (MeshData v)                                                          
             {
                 Interpolaters o;
-                o.vertex = UnityObjectToClipPos(v.vertex); // localSpace to clipSpace  
-                o.normal = v.normals; // show normals of the object -> visualize normalDirections 
-                // o.normal = UnityObjectToWorldNormal(v.normals);    
+                o.vertex = UnityObjectToClipPos(v.vertex); // localSpace to clipSpace 
+                o.normal = UnityObjectToWorldNormal(v.normals); // show normals of the object -> visualize normalDirections           
+
+                o.uv = v.uv0; 
                 return o;  
             }
 
@@ -54,8 +57,7 @@ Shader "Unlit/RainbowShader"
             // actual fragmentShader
             float4 frag (Interpolaters i) : SV_Target
             {          
-                return float4(i.normal,1);
-                // return float(i.uv,0,1); sameButBetter 
+                return float4(i.uv,0,1);
             }
             ENDCG 
         }
