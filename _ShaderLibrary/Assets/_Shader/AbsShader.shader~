@@ -1,23 +1,6 @@
-Shader "Unlit/newStuffShader"
+Shader "Unlit/AbsShader"
 {
-    Properties // ownDefined inputData    
-    {
-        
-        // _ColorA ("ColorA", Color) = (1,1,1,1)
-        // _ColorB ("ColorB", Color) = (1,1,1,1)
-
-        _ColorStart ("ColorStart", Range(0,1)) = 0
-        _ColorEnd ("ColorEnd", Range(0,1)) = 1
-
-        // _Scale ("UV Scale", Float) = 1
-        // _Offset ("Offset", Float) = 0
-    }
-    SubShader 
-    {
-        Tags { "RenderType"="Opaque" }
-          
-
-        Pass 
+    Pass 
         {
             CGPROGRAM
             #pragma vertex vert
@@ -25,8 +8,6 @@ Shader "Unlit/newStuffShader"
             
 
             #include "UnityCG.cginc"
-
-            #define TAU 6.2831853071 // perfectRepeat
 
             
            float4 _ColorA;
@@ -41,8 +22,8 @@ Shader "Unlit/newStuffShader"
             // automatically filled out by unity
             struct MeshData  // perVertex meshData    
             {  
-                float4 vertex : POSITION; // vertexPosition 
-                float3 normals : NORMAL; // normalDirection of a vertex     
+                float4 vertex : POSITION; // vertexPosition    
+                float3 normals : NORMAL; // normalDirection of a vertex       
                 float4 uv0 : TEXCOORD0; // uv0 coordinates -> diffuse/normal map textures  
                 
             };
@@ -50,7 +31,7 @@ Shader "Unlit/newStuffShader"
             struct Interpolaters // v2f     
             { 
                 
-                float4 vertex : SV_POSITION; // clipSpacePosition of the vertex 
+                float4 vertex : SV_POSITION; // clipSpacePosition of the vertex  
                 float3 normal : TEXCOORD0;      
 
                 float2 uv : TEXCOORD1; 
@@ -74,13 +55,13 @@ Shader "Unlit/newStuffShader"
                 return(v-a)/(b-a);
             }
 
-            // actual fragmentShader 
+            // actual fragmentShader  
             float4 frag (Interpolaters i) : SV_Target
             {
                 // blend between 2 colors based on the X UV coordinates with lerp 
                 // float t = InverseLerp(_ColorStart, _ColorEnd, i.uv.x);
 
-                float t = cos(i.uv.x * TAU * 25);
+                float t = abs(frac(i.uv.x * 5) * 2 - 1 );
                 return t;
 
                 float4 outColor = lerp(_ColorA, _ColorB, t);

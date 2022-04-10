@@ -1,4 +1,4 @@
-Shader "Unlit/newStuffShader"
+Shader "Unlit/TAUShader"
 {
     Properties // ownDefined inputData    
     {

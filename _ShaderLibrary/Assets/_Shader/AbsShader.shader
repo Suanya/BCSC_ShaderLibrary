@@ -1,4 +1,4 @@
-Shader "Unlit/newStuffShader"
+Shader "Unlit/AbsShader"
 {
     Properties // ownDefined inputData    
     {
@@ -25,8 +25,6 @@ Shader "Unlit/newStuffShader"
             
 
             #include "UnityCG.cginc"
-
-            #define TAU 6.2831853071 // perfectRepeat
 
             
            float4 _ColorA;
@@ -64,7 +62,7 @@ Shader "Unlit/newStuffShader"
                 o.vertex = UnityObjectToClipPos(v.vertex); // localSpace to clipSpace  
                 o.normal = UnityObjectToWorldNormal(v.normals); // show normals of the object -> visualize normalDirections             
                 // o.uv = (v.uv0 + _Offset) * _Scale;
-                o.uv = v.uv0; // passTrough; 
+                o.uv = v.uv0; // passTrough;  
                 return o;  
             }
 
@@ -80,7 +78,7 @@ Shader "Unlit/newStuffShader"
                 // blend between 2 colors based on the X UV coordinates with lerp 
                 // float t = InverseLerp(_ColorStart, _ColorEnd, i.uv.x);
 
-                float t = cos(i.uv.x * TAU * 25);
+                float t = abs(frac(i.uv.x * 5) * 2 - 1 );
                 return t;
 
                 float4 outColor = lerp(_ColorA, _ColorB, t);
