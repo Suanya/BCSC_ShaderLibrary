@@ -1,9 +1,9 @@
-Shader "Unlit/ColorShader"
+Shader "Unlit/UsefulColorShader"
 {
     Properties // ownDefined inputData  
     {
         
-        _Value ("Value", Float) = 1.0     
+        _Color ("Color", Color) = (1,1,1,1)    
     }
     SubShader 
     {
@@ -20,7 +20,7 @@ Shader "Unlit/ColorShader"
             #include "UnityCG.cginc"
 
             
-           float _Value;  
+           float4 _Color;  
 
             // automatically filled out by unity
             struct MeshData  // perVertex meshData    
@@ -28,7 +28,7 @@ Shader "Unlit/ColorShader"
                 float4 vertex : POSITION; // vertexPosition   
                 float3 normals : NORMAL; // normalDirection of a vertex      
                
-                float2 uv0 : TEXCOORD0; // uv0 coordinates -> diffuse/normal map textures 
+                float2 uv0 : TEXCOORD0; // uv0 coordinates -> diffuse/normal map textures  
                 
             };
 
@@ -36,7 +36,7 @@ Shader "Unlit/ColorShader"
             { 
                 
                 float4 vertex : SV_POSITION; // clipSpacePosition of the vertex
-                // float2 uv : TEXCOORD0;                    
+                float3 normal : TEXCOORD0;                    
             };   
 
                                   
@@ -44,7 +44,8 @@ Shader "Unlit/ColorShader"
             Interpolaters vert (MeshData v)                                                          
             {
                 Interpolaters o;
-                o.vertex = UnityObjectToClipPos(v.vertex); 
+                o.vertex = UnityObjectToClipPos(v.vertex); // localSpace to clipSpace 
+                o.normal = v.normals; // show normals of the object -> visualize normalDirections     
                 return o;  
             }
 
@@ -53,7 +54,7 @@ Shader "Unlit/ColorShader"
             // actual fragmentShader
             float4 frag (Interpolaters i) : SV_Target
             {          
-                return float4(1,1, 0,1);
+                return float4(i.normal,1);
             }
             ENDCG 
         }

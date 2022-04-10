@@ -1,4 +1,4 @@
-Shader "Unlit/ColorShader"
+Shader "Unlit/UsefulColorShader"
 {
     Properties // ownDefined inputData  
     {

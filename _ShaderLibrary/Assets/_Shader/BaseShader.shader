@@ -45,6 +45,7 @@ Shader "Unlit/BaseShader"
             {
                 Interpolaters o;
                 o.vertex = UnityObjectToClipPos(v.vertex);    // multiplying by modelViewProjectionMatrix (mwpMatrix) -> localSpace to clipSpace 
+                // o.vertex = v.vertex; -> stuckToCamera
                 return o;
             }
 
