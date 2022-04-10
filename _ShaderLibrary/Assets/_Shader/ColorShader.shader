@@ -1,60 +1,53 @@
 Shader "Unlit/ColorShader"
 {
-    Properties // ownDefined inputData  
+    Properties
     {
-        
-        _Value ("Value", Float) = 1.0     
+        _Color ("Color", Color) = (1,1,0,1)
     }
-    SubShader 
+    SubShader
     {
         Tags { "RenderType"="Opaque" }
-          
+       
 
-        Pass 
+        Pass
         {
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            
+           
 
             #include "UnityCG.cginc"
 
-            
-           float _Value;  
+            float4 _Color;
 
-            // automatically filled out by unity
-            struct MeshData  // perVertex meshData    
+            struct MeshData
             {
-                float4 vertex : POSITION; // vertexPosition   
-                float3 normals : NORMAL; // normalDirection of a vertex      
-               
-                float2 uv0 : TEXCOORD0; // uv0 coordinates -> diffuse/normal map textures 
-                
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
+
+                float2 uv1 : TEXCOORD1;
             };
 
-            struct Interpolaters // v2f 
-            { 
-                
-                float4 vertex : SV_POSITION; // clipSpacePosition of the vertex
-                // float2 uv : TEXCOORD0;                    
-            };   
-
-                                  
-
-            Interpolaters vert (MeshData v)                                                          
+            struct Interpolateros
             {
-                Interpolaters o;
-                o.vertex = UnityObjectToClipPos(v.vertex); 
-                return o;  
+                float4 vertex : SV_POSITION;
+            };
+
+          
+
+            Interpolateros vert (MeshData v)
+            {
+                Interpolateros o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                // o.vertex = v.vertey; -> stuckToCamera    
+                
+                return o;
             }
 
-            
-
-            // actual fragmentShader
-            float4 frag (Interpolaters i) : SV_Target
-            {          
-                return float4(1,1, 0,1);
-            }
+            fixed4 frag (Interpolateros i) : SV_Target
+            {  
+                return _Color;
+            }  
             ENDCG 
         }
     }
