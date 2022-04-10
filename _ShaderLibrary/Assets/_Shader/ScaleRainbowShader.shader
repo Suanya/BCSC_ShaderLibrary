@@ -1,9 +1,10 @@
-Shader "Unlit/MoveColorShader"
+Shader "Unlit/ScaleRainbowShader"
 {
-    Properties // ownDefined inputData  
+    Properties // ownDefined inputData   
     {
         
-        _Color ("Color", Color) = (1,1,1,1)    
+        _Color ("Color", Color) = (1,1,1,1)
+        _Scale ("UV Scale", Float) = 1
     }
     SubShader 
     {
@@ -20,7 +21,8 @@ Shader "Unlit/MoveColorShader"
             #include "UnityCG.cginc"
 
             
-           float4 _Color;  
+           float4 _Color;
+           float _Scale;
 
             // automatically filled out by unity
             struct MeshData  // perVertex meshData    
@@ -34,8 +36,8 @@ Shader "Unlit/MoveColorShader"
             struct Interpolaters // v2f    
             { 
                 
-                float4 vertex : SV_POSITION; // clipSpacePosition of the vertex
-                float3 normal : TEXCOORD0;
+                float4 vertex : SV_POSITION; // clipSpacePosition of the vertex 
+                float3 normal : TEXCOORD0;      
 
                 float2 uv : TEXCOORD1; 
             };   
@@ -48,13 +50,13 @@ Shader "Unlit/MoveColorShader"
                 o.vertex = UnityObjectToClipPos(v.vertex); // localSpace to clipSpace 
                 o.normal = UnityObjectToWorldNormal(v.normals); // show normals of the object -> visualize normalDirections           
 
-                o.uv = v.uv0; 
+                o.uv = v.uv0 * _Scale; 
                 return o;  
             }
 
             
 
-            // actual fragmentShader
+            // actual fragmentShader 
             float4 frag (Interpolaters i) : SV_Target
             {          
                 return float4(i.uv,0,1);
