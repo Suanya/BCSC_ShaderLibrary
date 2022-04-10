@@ -81,6 +81,7 @@ Shader "Unlit/TAUShader"
                 // float t = InverseLerp(_ColorStart, _ColorEnd, i.uv.x);
 
                 float t = cos(i.uv.x * TAU * 25);
+                //  float t = cos(i.uv.x * TAU * 2) * 0.5 + 0.5
                 return t;
 
                 float4 outColor = lerp(_ColorA, _ColorB, t);

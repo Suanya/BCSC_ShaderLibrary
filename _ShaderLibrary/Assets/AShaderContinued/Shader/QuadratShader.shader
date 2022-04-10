@@ -1,16 +1,14 @@
-Shader "Unlit/newStuffShader"
+Shader "Unlit/QuadratShader"
 {
-    Properties // ownDefined inputData    
+   Properties // ownDefined inputData    
     {
         
-        // _ColorA ("ColorA", Color) = (1,1,1,1)
-        // _ColorB ("ColorB", Color) = (1,1,1,1)
-
+        _ColorA ("ColorA", Color) = (1,1,1,1)
+        _ColorB ("ColorB", Color) = (1,1,1,1)
         _ColorStart ("ColorStart", Range(0,1)) = 0
         _ColorEnd ("ColorEnd", Range(0,1)) = 1
 
-        // _Scale ("UV Scale", Float) = 1
-        // _Offset ("Offset", Float) = 0
+        
     }
     SubShader 
     {
@@ -31,7 +29,6 @@ Shader "Unlit/newStuffShader"
             
            float4 _ColorA;
            float4 _ColorB;
-
            float _ColorStart;
            float _ColorEnd;
 
@@ -52,7 +49,6 @@ Shader "Unlit/newStuffShader"
                 
                 float4 vertex : SV_POSITION; // clipSpacePosition of the vertex 
                 float3 normal : TEXCOORD0;      
-
                 float2 uv : TEXCOORD1; 
             };   
 
@@ -63,7 +59,6 @@ Shader "Unlit/newStuffShader"
                 Interpolaters o;
                 o.vertex = UnityObjectToClipPos(v.vertex); // localSpace to clipSpace  
                 o.normal = UnityObjectToWorldNormal(v.normals); // show normals of the object -> visualize normalDirections             
-                // o.uv = (v.uv0 + _Offset) * _Scale;
                 o.uv = v.uv0; // passTrough; 
                 return o;  
             }
@@ -72,6 +67,7 @@ Shader "Unlit/newStuffShader"
             float InverseLerp(float a, float b, float v)
             {
                 return(v-a)/(b-a);
+                
             }
 
             // actual fragmentShader 
@@ -80,11 +76,14 @@ Shader "Unlit/newStuffShader"
                 // blend between 2 colors based on the X UV coordinates with lerp 
                 // float t = InverseLerp(_ColorStart, _ColorEnd, i.uv.x);
 
-                float t = cos(i.uv.x * TAU * 25);
-                return t;
+                float2 t = cos(i.uv.xy * TAU * 2) * 0.5 + 0.5;
+                return float4(t, 0, 1);
+                
+    
+                
 
-                float4 outColor = lerp(_ColorA, _ColorB, t);
-                return outColor;
+                //float4 outColor = lerp(_ColorA, _ColorB, t);
+                //return outColor;
             }
             ENDCG 
         }
