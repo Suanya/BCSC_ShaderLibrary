@@ -1,6 +1,5 @@
-Shader "Unlit/newStuffShader"
-{
-    Properties // ownDefined inputData    
+Shader "Unlit/FadeOutShader"
+{ Properties // ownDefined inputData    
     {
         
         _ColorA ("ColorA", Color) = (1,1,1,1)
@@ -35,7 +34,7 @@ Shader "Unlit/newStuffShader"
            // float _Scale;
            // float _Offset;
 
-            // automatically filled out by unity
+            // automatically filled out by unity 
             struct MeshData  // perVertex meshData    
             {  
                 float4 vertex : POSITION; // vertexPosition 
@@ -64,7 +63,7 @@ Shader "Unlit/newStuffShader"
             }
 
             // define own function
-            float InverseLerp(float a, float b, float v)
+            float InverseLerp(float a, float b, float v)  
             {
                 return(v-a)/(b-a);
                 
@@ -75,7 +74,7 @@ Shader "Unlit/newStuffShader"
             {
                 // blend between 2 colors based on the X UV coordinates with lerp 
 
-                // return i.uv.y;
+                
 
                 float xOffset = cos(i.uv.x * TAU * 8) * 0.01;
                 float t = cos( (i.uv.y + xOffset + _Time.y * 0.1 ) * TAU * 5) * 0.5 + 0.5;

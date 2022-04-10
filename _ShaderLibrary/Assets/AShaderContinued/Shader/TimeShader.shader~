@@ -1,4 +1,4 @@
-Shader "Unlit/newStuffShader"
+Shader "Unlit/TimeShader"
 {
     Properties // ownDefined inputData    
     {
@@ -75,12 +75,11 @@ Shader "Unlit/newStuffShader"
             {
                 // blend between 2 colors based on the X UV coordinates with lerp 
 
-                // return i.uv.y;
+                
 
-                float xOffset = cos(i.uv.x * TAU * 8) * 0.01;
-                float t = cos( (i.uv.y + xOffset + _Time.y * 0.1 ) * TAU * 5) * 0.5 + 0.5;
-                t *= 1 - i.uv.y;
-
+                float xOffset = cos(i.uv.y * TAU * 8) * 2.0;
+                float t = cos((i.uv.x + xOffset * (_Time.y * 0.1)) * TAU * 5) * 0.5 + 0.5;
+                
                 return t;
 
                 //float4 outColor = lerp(_ColorA, _ColorB, t);

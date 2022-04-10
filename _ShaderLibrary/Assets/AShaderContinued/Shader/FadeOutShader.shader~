@@ -1,6 +1,5 @@
-Shader "Unlit/newStuffShader"
-{
-    Properties // ownDefined inputData    
+Shader "Unlit/FadeOutShader"
+{ Properties // ownDefined inputData    
     {
         
         _ColorA ("ColorA", Color) = (1,1,1,1)
@@ -64,7 +63,7 @@ Shader "Unlit/newStuffShader"
             }
 
             // define own function
-            float InverseLerp(float a, float b, float v)
+            float InverseLerp(float a, float b, float v)  
             {
                 return(v-a)/(b-a);
                 
