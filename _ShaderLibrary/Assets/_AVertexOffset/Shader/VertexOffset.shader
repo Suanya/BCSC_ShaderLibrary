@@ -13,8 +13,8 @@ Shader "Unlit/VertexOffset"
     SubShader 
     {
         Tags {
-            "RenderType"="Transparent"
-            "Queue"="Transparent"
+            "RenderType"="Opaque"
+            // "Queue"="Geometry"
                 
         }
           
@@ -23,17 +23,7 @@ Shader "Unlit/VertexOffset"
         {
             // passTags
 
-            // Blending
-            Cull Off
-            ZWrite Off   
-            Blend One One // additive
-
-            // Blend DstColor Zero // multiply
-            // Cull Front
-            // Cull Back
-            // ZTest LEqual
-            // ZTest Always
-            // ZTest GEqual
+            
            
             CGPROGRAM
             #pragma vertex vert
@@ -54,7 +44,7 @@ Shader "Unlit/VertexOffset"
            // float _Offset;
 
             // automatically filled out by unity
-            struct MeshData  // perVertex meshData    
+            struct MeshData  // perVertex meshData  
             {  
                 float4 vertex : POSITION; // vertexPosition 
                 float3 normals : NORMAL; // normalDirection of a vertex     
@@ -81,7 +71,7 @@ Shader "Unlit/VertexOffset"
                 return o;  
             }
 
-            // define own function
+            // define own function 
             float InverseLerp(float a, float b, float v)
             {
                 return(v-a)/(b-a);
@@ -93,18 +83,16 @@ Shader "Unlit/VertexOffset"
             {
                 // blend between 2 colors based on the X UV coordinates with lerp 
 
-                // return i.uv.y;
-
-                float xOffset = cos(i.uv.x * TAU * 8) * 0.01;
-                float t = cos( (i.uv.y + xOffset + _Time.y * 0.1 ) * TAU * 5) * 0.5 + 0.5;
-                t *= i.uv.y;
-
-                float topBottomRemover = (abs(i.normal.y) < 0.999);
-                float waves = t * topBottomRemover;
-
                 
 
+                float t = cos( (i.uv.y + _Time.y * 0.1 ) * TAU * 5) * 0.5 + 0.5;
+                // t *= 1 - i.uv.y;
+                return t;
+
+                float topBottomRemover = (abs(i.normal.x) < 0.999);
+                float waves = t * topBottomRemover;
                 float4 gradient = lerp(_ColorA, _ColorB, i.uv.y);
+
                 return gradient * waves;   
             }
             ENDCG 
