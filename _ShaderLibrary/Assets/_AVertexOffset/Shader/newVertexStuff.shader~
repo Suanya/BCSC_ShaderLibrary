@@ -1,6 +1,6 @@
-Shader "Unlit/VertexOffset"
+Shader "Unlit/newVertexStuff"
 {
-   Properties // ownDefined inputData    
+    Properties // ownDefined inputData    
     {
         
         _ColorA ("ColorA", Color) = (1,1,1,1)
@@ -66,18 +66,18 @@ Shader "Unlit/VertexOffset"
             {
                 Interpolaters o;
 
-                float wave = cos( (v.uv0.y - _Time.y * 0.1)  * TAU * 5);
-                float wave2 = cos( (v.uv0.x - _Time.y * 0.1)  * TAU * 5);
+                // float wave = cos( (v.uv0.y - _Time.y * 0.1)  * TAU * 5);
+                // float wave2 = cos( (v.uv0.x - _Time.y * 0.1)  * TAU * 5);
                 
 
-                v.vertex.y = wave * wave2 * _WaveAmp;
+                // v.vertex.y = wave * wave2 * _WaveAmp;
  
 
                 
                 
                 o.vertex = UnityObjectToClipPos(v.vertex); // localSpace to clipSpace  
                 o.normal = UnityObjectToWorldNormal(v.normals); // show normals of the object -> visualize normalDirections             
-                o.uv = v.uv0; // passTrough;  
+                o.uv = v.uv0; // passTrough; 
                 return o;  
             }
 

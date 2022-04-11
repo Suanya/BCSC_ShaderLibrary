@@ -1,6 +1,6 @@
-Shader "Unlit/VertexOffset"
+Shader "Unlit/HypnothizerShader"
 {
-   Properties // ownDefined inputData    
+    Properties // ownDefined inputData      
     {
         
         _ColorA ("ColorA", Color) = (1,1,1,1)
@@ -46,8 +46,8 @@ Shader "Unlit/VertexOffset"
             // automatically filled out by unity
             struct MeshData  // perVertex meshData  
             {  
-                float4 vertex : POSITION; // vertexPosition    
-                float3 normals : NORMAL; // normalDirection of a vertex     
+                float4 vertex : POSITION; // vertexPosition        
+                float3 normals : NORMAL; // normalDirection of a vertex       
                 float4 uv0 : TEXCOORD0; // uv0 coordinates -> diffuse/normal map textures  
                 
             };
@@ -66,34 +66,39 @@ Shader "Unlit/VertexOffset"
             {
                 Interpolaters o;
 
-                float wave = cos( (v.uv0.y - _Time.y * 0.1)  * TAU * 5);
-                float wave2 = cos( (v.uv0.x - _Time.y * 0.1)  * TAU * 5);
+                // float wave = cos( (v.uv0.y - _Time.y * 0.1)  * TAU * 5);
+                // float wave2 = cos( (v.uv0.x - _Time.y * 0.1)  * TAU * 5);
                 
 
-                v.vertex.y = wave * wave2 * _WaveAmp;
+                // v.vertex.y = wave * wave2 * _WaveAmp;
  
 
                 
                 
                 o.vertex = UnityObjectToClipPos(v.vertex); // localSpace to clipSpace  
                 o.normal = UnityObjectToWorldNormal(v.normals); // show normals of the object -> visualize normalDirections             
-                o.uv = v.uv0; // passTrough;  
+                o.uv = v.uv0; // passTrough; 
                 return o;  
             }
 
             // define own function 
             float InverseLerp(float a, float b, float v)
             {
-                return(v-a)/(b-a);
-                
+                return(v-a)/(b-a);    
             }
+
+            
 
             // actual fragmentShader 
             float4 frag (Interpolaters i) : SV_Target
             {
-                // blend between 2 colors based on the X UV coordinates with lerp 
-
-                float wave = cos( (i.uv.y - _Time.y * 0.1 ) * TAU * 5) * 0.5 + 0.5;
+                // blend between 2 colors based on the X UV coordinates with lerp
+   
+                float2 uvsCentered = i.uv * 2 - 1;
+                float radialDistance = length(uvsCentered);
+      
+                float wave = cos( (radialDistance - _Time.y * 0.1 ) * TAU * 5) * 0.5 + 0.5;
+                // wave *= radialDistance; // fadeOut 
                 return wave;
             }
             ENDCG 

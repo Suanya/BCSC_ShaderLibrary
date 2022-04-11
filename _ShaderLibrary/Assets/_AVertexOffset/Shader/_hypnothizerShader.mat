@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: _vertexOffset
-  m_Shader: {fileID: 4800000, guid: 12cf0dc7a3793443a8d84dd5930eb6f4, type: 3}
+  m_Name: _hypnothizerShader
+  m_Shader: {fileID: 4800000, guid: 4f90a82182c3745cd8652cd1ec9bf796, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -18,12 +18,16 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _ColorEnd: 0.56
+    - _ColorEnd: 1
     - _ColorStart: 0
-    - _WaveAmp: 0.053
+    - _WaveAmp: 0.1
     m_Colors:
-    - _ColorA: {r: 1, g: 0.903612, b: 0, a: 1}
-    - _ColorB: {r: 0, g: 0.20616484, b: 1, a: 1}
+    - _ColorA: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorB: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
