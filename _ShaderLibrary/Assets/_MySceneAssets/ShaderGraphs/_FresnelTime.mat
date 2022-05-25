@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: _colorGradient
-  m_Shader: {fileID: 4800000, guid: 0d06c4154b66f4be8ad6465f98c5651c, type: 3}
+  m_Name: _FresnelTime
+  m_Shader: {fileID: -6465566751694194690, guid: 19889fa7299e54394b2aff3c1dd47cf6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,14 +19,19 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainTex:
+    - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorEnd: 0.841
-    - _ColorStart: 0.693
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
     m_Colors:
-    - _ColorA: {r: 0.8679245, g: 0.13510147, b: 0.7242338, a: 1}
-    - _ColorB: {r: 0.5217604, g: 0.53830767, b: 0.6320754, a: 1}
+    - Color_49e0e99edcd148b69da06ce99f85b84c: {r: 1, g: 0.93442965, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -53,7 +53,7 @@ Shader "Unlit/newStuffShader"
            // float _Scale;
            // float _Offset;
 
-            // automatically filled out by unity
+            // automatically filled out by unity  
             struct MeshData  // perVertex meshData    
             {  
                 float4 vertex : POSITION; // vertexPosition 
@@ -77,11 +77,11 @@ Shader "Unlit/newStuffShader"
                 Interpolaters o;
                 o.vertex = UnityObjectToClipPos(v.vertex); // localSpace to clipSpace  
                 o.normal = UnityObjectToWorldNormal(v.normals); // show normals of the object -> visualize normalDirections             
-                o.uv = v.uv0; // passTrough; 
+                o.uv = v.uv0; // passTrough;  
                 return o;  
             }
 
-            // define own function
+            // define own function 
             float InverseLerp(float a, float b, float v)
             {
                 return(v-a)/(b-a);
