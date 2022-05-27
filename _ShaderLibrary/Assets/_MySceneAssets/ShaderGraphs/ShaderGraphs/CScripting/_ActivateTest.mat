@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: _ColorSwitch
-  m_Shader: {fileID: -6465566751694194690, guid: 3c31139f314934db396f2f890424d371, type: 3}
+  m_Name: _ActivateTest
+  m_Shader: {fileID: -6465566751694194690, guid: ec481b7d78d4643c8b3fe15c963ff370, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,11 +32,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _RippleSmooth: 0.2
-    - _RippleSpeed: 1
-    - _RippleStartTime: 14.97746
+    - _ActivatePulseRate: 1
+    - _ActivateScale: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 0, b: 0.88639736, a: 1}
-    - _RippleCenter: {r: -1.5633827, g: -0.4632423, b: -4.8804836, a: 0}
-    - _RippleColor: {r: 1, g: 0, b: 0.88639736, a: 1}
+    - _ActivateColor: {r: 1, g: 0.93442965, b: 0, a: 0}
   m_BuildTextureStacks: []
