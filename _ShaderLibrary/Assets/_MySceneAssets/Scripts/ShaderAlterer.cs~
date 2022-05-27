@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ShaderAlterer : MonoBehaviour
+{
+    [SerializeField]
+    private Renderer m_rend;
+
+    [SerializeField]
+    private float amt;
+
+    private void Update()
+    {
+        m_rend.material.SetFloat("_PusleRate", amt);
+    }
+}

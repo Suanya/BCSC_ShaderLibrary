@@ -784,7 +784,7 @@
     },
     "m_Name": "PulseRate",
     "m_DefaultReferenceName": "Vector1_345ca2808ef94b378089a27603bcdc69",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_PulseRate",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
@@ -2093,8 +2093,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1421.999755859375,
-            "y": 811.9998168945313,
+            "x": -1199.0,
+            "y": 677.9999389648438,
             "width": 107.0,
             "height": 34.0
         }
