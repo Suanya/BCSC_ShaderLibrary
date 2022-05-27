@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: _Noise4
-  m_Shader: {fileID: -6465566751694194690, guid: 04f9f92c282db4edaaa3933daabdf51a, type: 3}
+  m_Name: _FreeStyle
+  m_Shader: {fileID: -6465566751694194690, guid: 7d63b39ee83d84ca9b3c138c3526acbe, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -31,9 +31,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_345ca2808ef94b378089a27603bcdc69: 0.64
-    - Vector1_b1e70cd375e745d181b769e35d4d1f7b: 9.82
-    m_Colors:
-    - Color_36a2593de55d4ffd8a57a76086b2131c: {r: 0.56170344, g: 1, b: 0, a: 0}
+    m_Floats: []
+    m_Colors: []
   m_BuildTextureStacks: []
