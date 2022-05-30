@@ -32,8 +32,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _ActivatePulseRate: 1
-    - _ActivateScale: 1
+    - _ActivatePulseRate: 2
+    - _ActivateScale: 3
     m_Colors:
-    - _ActivateColor: {r: 1, g: 0.93442965, b: 0, a: 0}
+    - _ActivateChangeColor: {r: 1, g: 0.95919025, b: 0, a: 1}
+    - _ActivateColor: {r: 1, g: 0, b: 0.19821882, a: 1}
   m_BuildTextureStacks: []

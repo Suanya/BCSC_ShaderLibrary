@@ -1,3 +1,5 @@
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,14 +11,12 @@ public class Activate : MonoBehaviour
 
     [SerializeField]
     private Color activateColor;
-    // private Color activateChangeColor;
 
-
-
+    // public AudioSource heartBeat;
+    
     private void Start()
     {
         material = GetComponent<MeshRenderer>().sharedMaterial;
-
         activateColor = material.GetColor("_ActivateColor");
         material.SetColor("_ActivateChangeColor", activateColor);
     }
@@ -33,32 +33,25 @@ public class Activate : MonoBehaviour
     {
         var camera = Camera.main;
         var mousePosition = Input.mousePosition;
+        var ray = camera.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y,
+            camera.nearClipPlane));
 
-        // the xy coordinates are in screen space, while the z coordinate is in view space
-        var ray = camera.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y, camera.nearClipPlane));
-
-        // if our ray hits a collider, and that collider is attached to his game object
         if (Physics.Raycast(ray, out var hit) && hit.collider.gameObject == gameObject)
         {
             StartWobble(hit.point);
         }
-
-        
     }
 
     private void StartWobble(Vector3 center)
     {
-        material.SetFloat("_ActivateScale", Time.time);
-
-        // the Time.timeSinceLevelLoad value is the same as the Time node in shader graph
-        material.SetFloat("_ActivatePulseRate", Time.time);
+        material.SetFloat("_ActivateScale", 3);
+        material.SetFloat("_ActivatePulseRate", 2);
 
         Color activateChangeColor = Color.HSVToRGB(Random.value, 1, 1);
-
         material.SetColor("_ActivateColor", activateColor);
         material.SetColor("_ActivateChangeColor", activateChangeColor);
-
         activateColor = activateChangeColor;
-
     }
 }
+
+
