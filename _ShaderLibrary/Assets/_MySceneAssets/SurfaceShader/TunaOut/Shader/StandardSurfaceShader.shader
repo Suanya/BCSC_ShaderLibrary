@@ -69,7 +69,7 @@ Shader "Custom/StandardSurfaceShader"
             o.Albedo = c.rgb;
             o.Emission = texCUBE (_EnvMap, IN.worldRefl * n).rgb; // calculating cubemap reflection by writing to Emission and distort reflection by the normal map           
             o.Normal = UnpackNormal (tex2D(_Normal, IN.uv_Normal)); // Implementing the normal map calculation here  
-            o.Metallic = _Metallic; // Metallic and smoothness come from slider variables 
+            o.Metallic = _Metallic; // Metallic and smoothness come from slider variables        
             o.Smoothness = _Glossiness;
             o.Alpha = c.a * _Opacity; // added opacity for disorting reflection
         }
