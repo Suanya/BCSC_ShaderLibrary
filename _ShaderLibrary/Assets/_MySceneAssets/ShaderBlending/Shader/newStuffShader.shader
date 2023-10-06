@@ -1,6 +1,6 @@
-Shader "Unlit/newStuffShader"
+Shader "Unlit/newStuffShader"   
 {
-    Properties // ownDefined inputData    
+    Properties // ownDefined inputData          
     {
         
         _ColorA ("ColorA", Color) = (1,1,1,1)
@@ -10,7 +10,7 @@ Shader "Unlit/newStuffShader"
 
         
     }
-    SubShader 
+    SubShader                      
     {
         Tags {
             "RenderType"="Transparent"
@@ -105,9 +105,9 @@ Shader "Unlit/newStuffShader"
                 
 
                 float4 gradient = lerp(_ColorA, _ColorB, i.uv.y);
-                return gradient * waves;   
-            }
-            ENDCG 
+                return gradient * waves;      
+            }           
+            ENDCG                          
         }
     }
 }

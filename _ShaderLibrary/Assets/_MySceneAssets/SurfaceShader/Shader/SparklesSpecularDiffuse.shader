@@ -24,7 +24,7 @@ Shader "Unlit/SparklesSpecularDiffuse"
 
         Pass
         {
-            Tags { "LightMode" = "ForwardBase"}
+            //Tags { "LightMode" = "ForwardBase"}
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag

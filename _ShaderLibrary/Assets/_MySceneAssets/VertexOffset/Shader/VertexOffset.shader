@@ -55,7 +55,7 @@ Shader "Unlit/VertexOffset"
             struct Interpolaters // v2f     
             { 
                 
-                float4 vertex : SV_POSITION; // clipSpacePosition of the vertex 
+                float4 vertex : SV_POSITION; // clipSpacePosition of the vertex  
                 float3 normal : TEXCOORD0;      
                 float2 uv : TEXCOORD1; 
             };   
@@ -88,13 +88,14 @@ Shader "Unlit/VertexOffset"
                 
             }
 
-            // actual fragmentShader 
-            float4 frag (Interpolaters i) : SV_Target
+            // actual fragmentShader    
+            float4 frag (Interpolaters i) : SV_Target      
             {
                 // blend between 2 colors based on the X UV coordinates with lerp 
 
                 float wave = cos( (i.uv.y - _Time.y * 0.1 ) * TAU * 5) * 0.5 + 0.5;
-                return wave;
+
+                return wave ;
             }
             ENDCG 
         }

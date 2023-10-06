@@ -23,13 +23,13 @@ Shader "Unlit/WaterfallShader"
         {
             // passTags
 
-            // Blending  
+            // Blending   
             ZWrite Off
             Blend One One // additive
 
             //Blend DstColor Zero // multiply
             
-            CGPROGRAM
+            CGPROGRAM 
             #pragma vertex vert
             #pragma fragment frag
             
