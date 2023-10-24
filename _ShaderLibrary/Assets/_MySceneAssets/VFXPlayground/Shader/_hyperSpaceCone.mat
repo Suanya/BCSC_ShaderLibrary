@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: _hyperSpaceCone
+  m_Shader: {fileID: -6465566751694194690, guid: 803275182811142b6b12ac74f89bb4cf,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Texture2D_Noise:
+        m_Texture: {fileID: 2800000, guid: c36be3e99ade44c5a867bb0c1f7ec300, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Active: 0.924
+    m_Colors:
+    - Vector2_30e24cc809944fdfb59c2da99930204f: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_bf560924f4d746398e9d14a03b89cabe: {r: 0, g: 0, b: 0, a: 0}
+    - Vector4_ebfdd5e035484b3ba5e1269bc6ece060: {r: 9.83, g: 3.66, b: 1.35, a: -4.6}
+    - _Color: {r: 0.48998266, g: 2.119925, b: 1.067289, a: 0}
+    - _Disolve: {r: 1.2, g: 2.56, b: 0.82, a: 0.53}
+    - _MainSpeed: {r: 0.1, g: 0.1, b: 0, a: 0}
+  m_BuildTextureStacks: []

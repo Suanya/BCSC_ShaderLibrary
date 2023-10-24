@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.VFX;
+
+public class WarpSpeed : MonoBehaviour
+{
+    public VisualEffect _warpSpeedVFX;
+    public float rate = 0.02f;
+
+    private bool warpActive;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _warpSpeedVFX.Stop();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            warpActive = true;
+            StartCoroutine(ActivateParticles());
+        }
+    }
+
+    IEnumerator ActivateParticles()
+    {
+       if(warpActive)
+        {
+            _warpSpeedVFX.Play();
+
+            float amount = _warpSpeedVFX.GetFloat("Warp Amount");
+            while(amount < 1)
+            {
+                amount += rate;
+                _warpSpeedVFX.SetFloat("Warp Amoung", amount);
+                yield return new WaitForSeconds(0.1f);
+            }
+            else
+            {
+                _warpSpeedVFX.Stop();
+            }
+        }
+        
+    }
+}
