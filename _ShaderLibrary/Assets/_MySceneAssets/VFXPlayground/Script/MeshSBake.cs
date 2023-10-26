@@ -3,7 +3,7 @@ using UnityEngine.VFX;
 using UnityEngine.VFX.SDF;
 
 
-public class VFXUpdateSkinnedSDF : MonoBehaviour
+public class MeshToSDFBaker : MonoBehaviour
 {
     MeshToSDFBaker m_Baker;
     SkinnedMeshRenderer m_SkinnedMeshRenderer;
