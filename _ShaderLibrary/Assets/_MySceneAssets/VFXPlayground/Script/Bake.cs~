@@ -3,9 +3,9 @@ using UnityEngine.VFX;
 using UnityEngine.VFX.SDF;
 
 
-public class MeshToSDFBaker : MonoBehaviour
+public class Bake : MonoBehaviour
 {
-    MeshToSDFBaker m_Baker;
+    Bake m_Baker;
     SkinnedMeshRenderer m_SkinnedMeshRenderer;
     Mesh m_Mesh;
     VisualEffect m_Vfx;
@@ -40,4 +40,3 @@ public class MeshToSDFBaker : MonoBehaviour
             m_Baker.Dispose();
         }
     }
-}
