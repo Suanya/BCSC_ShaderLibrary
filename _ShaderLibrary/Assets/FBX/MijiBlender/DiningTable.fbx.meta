@@ -1,27 +1,9 @@
 fileFormatVersion: 2
-guid: e45101efbb7df422aaedc4114f2c7b8c
+guid: 5c5ee9eea68654d5ea053669b0a80b5a
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable:
-  - first:
-      74: -203655887218126122
-    second: mixamo.com
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Arissa_DIFF_diffuse
-    second: {fileID: 2800000, guid: 27bcfb24a905d42f98a55b1a61b2a0a9, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Arissa_NM_normal
-    second: {fileID: 2800000, guid: bece73ac6775d4bd9acc490c98a37373, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Arissa_SPEC_specular
-    second: {fileID: 2800000, guid: 9d403c0b1cda142fd8db0bfc60f0ac02, type: 3}
+  internalIDToNameTable: []
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -49,7 +31,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
